@@ -36,13 +36,13 @@
     </style>
 </head>
 <body>
-    <!-- Audio Element for Background Sound (Initially Muted) -->
     <audio id="background-audio" loop muted>
         <source src="2_Minute_Thunderstorm.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
-    <a href="file:///Users/alesya/Downloads/site_genisis_downloads/where_you_came_from.html"> 
+    <!-- Updated relative link for GitHub -->
+    <a href="where_you_came_from.html"> 
         <div>Go Back</div>
     </a>
 
@@ -51,11 +51,9 @@
         window.addEventListener('load', function() {
             var audio = document.getElementById('background-audio');
 
-            // Add a click event listener to the body to play and unmute the audio when clicked
             document.body.addEventListener('click', function() {
-                audio.muted = false; // Unmute the audio
-                audio.play(); // Play the audio
-                // Optionally, you can remove this listener after the first click to prevent further clicks from affecting the audio
+                audio.muted = false; 
+                audio.play(); 
                 document.body.removeEventListener('click', arguments.callee);
             });
         });
