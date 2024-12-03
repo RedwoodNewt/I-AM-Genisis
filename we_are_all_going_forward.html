@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Mate:ital@0;1&family=Nanum+Myeongjo&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Prata&family=Quattrocento:wght@400;700&family=Ruwudu:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unna:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We_Are_All_Going_Forward</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black; 
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            color: red; 
+            font-size: 1.2em; 
+            text-align: center;
+            white-space: pre; 
+            overflow: hidden; 
+            line-height: 1.5; 
+            padding-right: 5px; 
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em; 
+            background-color: red; 
+            animation: blink 0.5s step-end infinite; 
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0; 
+            }
+        }
+
+        /* Font classes */
+        .font1 { font-family: 'Taviraj', serif; }
+        .font2 { font-family: 'Lora', serif; }
+        .font3 { font-family: 'PT Serif', serif; }
+        .font4 { font-family: 'Libre Baskerville', serif; }
+        .font5 { font-family: 'Ruwudu', serif; }
+        .font6 { font-family: 'Cormorant Garamond', serif; }
+        .font7 { font-family: 'Nanum Myeongjo', serif; }
+        .font8 { font-family: 'IBM Plex Serif', serif; }
+        .font9 { font-family: 'Vollkorn', serif; }
+        .font10 { font-family: 'Alegreya', serif; }
+        .font11 { font-family: 'Source Serif 4', serif; }
+        .font12 { font-family: 'Mate', serif; }
+        .font13 { font-family: 'Cormorant', serif; }
+        .font14 { font-family: 'Spectral', serif; }
+        .font15 { font-family: 'Prata', serif; }
+        .font16 { font-family: 'Amiri', serif; }
+        .font17 { font-family: 'Libre Caslon Text', serif; }
+        .font18 { font-family: 'Philosopher', serif; }
+        .font19 { font-family: 'Unna', serif; }
+        .font20 { font-family: 'Quattrocento', serif; }
+    </style>
+</head>
+<body>
+    <div class="text" id="typewriter"></div>
+
+    <script>
+        const textLines = [
+            "We are all going forward, none of us are going back."
+        ];
+
+        const repetitions = 50; 
+        const fullText = textLines.map(line => line + "\n").join('').repeat(repetitions); 
+        const typewriterElement = document.getElementById("typewriter");
+        let index = 0;
+        let lineCount = 0;
+        let baseSpeed = 200; 
+        let speedDecreaseFactor = 30; 
+        let currentSpeed = baseSpeed;
+
+        function type() {
+            if (index < fullText.length) {
+                if (fullText.charAt(index) === "\n") {
+                    // Add line break and apply font class for the line
+                    const fontClass = 'font' + ((lineCount % 20) + 1); // Cycle through 20 fonts
+                    typewriterElement.innerHTML += `<span class="${fontClass}"><br></span>`;
+                    lineCount++;
+                    index++;
+                } else {
+                    const fontClass = 'font' + ((lineCount % 20) + 1); // Apply the current line's font class
+                    typewriterElement.innerHTML += `<span class="${fontClass}">${fullText.charAt(index)}</span>`;
+                    index++;
+                }
+
+                // Calculate speed based on line count
+                currentSpeed = Math.max(baseSpeed - lineCount * speedDecreaseFactor, 18);
+
+                setTimeout(type, currentSpeed);
+            } else {
+                typewriterElement.innerHTML += '<span class="cursor"></span>';
+            }
+        }
+
+        function redirectAfterTimeout() {
+            setTimeout(() => {
+                window.location.href = "file:///Users/alesya/Downloads/site_genisis_downloads/go_back.html";
+            }, 65500); 
+        }
+
+        window.onload = function() {
+            type();
+            redirectAfterTimeout();
+        };
+    </script>
+</body>
+</html>

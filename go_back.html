@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go_Back</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://64.media.tumblr.com/66bff18fb2e749bfc664f3fbc1c9ca58/tumblr_pfdiwlHIZC1rh2n3qo1_r1_1280.gifv');
+            background-size: cover; 
+            background-position: center; 
+            margin: 0;
+            background-color: black; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: blue; 
+            font-family: "Jacquard 12", system-ui;
+            font-weight: 400; 
+            font-size: 5em; 
+            text-align: center; 
+        }
+
+        a {
+            color: blue; 
+            text-decoration: none; 
+        }
+
+        a:hover {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio Element for Background Sound (Initially Muted) -->
+    <audio id="background-audio" loop muted>
+        <source src="2_Minute_Thunderstorm.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <a href="file:///Users/alesya/Downloads/site_genisis_downloads/where_you_came_from.html"> 
+        <div>Go Back</div>
+    </a>
+
+    <script>
+        // Wait for the page to load and then add a click event listener to the entire body
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('background-audio');
+
+            // Add a click event listener to the body to play and unmute the audio when clicked
+            document.body.addEventListener('click', function() {
+                audio.muted = false; // Unmute the audio
+                audio.play(); // Play the audio
+                // Optionally, you can remove this listener after the first click to prevent further clicks from affecting the audio
+                document.body.removeEventListener('click', arguments.callee);
+            });
+        });
+    </script>
+</body>
+</html>

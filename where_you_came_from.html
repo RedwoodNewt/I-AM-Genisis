@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where_You_Came_From</title>
+    <style>
+        body {
+            background-color: black;
+            background-size: cover; 
+            background-position: center; 
+            margin: 0;
+
+            font-family: sans-serif;
+            text-align: center;
+            padding: 50px;
+            height: 100vh; 
+            margin: 0; 
+
+            margin: 0;
+            height: 300vh; 
+            overflow: auto; 
+            position: relative;
+        }
+
+        .popup {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: none;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 0px;
+            cursor: move; 
+        }
+
+        .popup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        #popup1 { top: 2%; left: 40%; }
+        #popup2 { top: 18%; left: 42%; }
+        #popup3 { top: 30%; left: 38%; }
+        #popup4 { top: 40%; left: 40%; }
+        #popup5 { top: 15%; left: 25%; }
+        #popup6 { top: 25%; left: 20%; } 
+        #popup7 { top: 15%; right: 30%; }
+        #popup8 { top: 25%; right: 25%; }
+        #popup9 { top: 55%; right: 30%; }
+        #popup10 { top: 38%; left: 10%; }
+        #popup11 { top: 40%; right: 10%; }
+        #popup12 { top: 65%; right: 25%; }
+        #popup13 { top: 75%; right: 30%; }
+        #popup14 { top: 55%; left: 30%; }
+        #popup15 { top: 65%; left: 25%; }
+        #popup16 { top: 75%; left: 20%; }
+        #popup17 {top: 88%; right: 30%; }
+        #popup18 {top: 88%; left: 30%; }
+
+    </style>
+</head>
+<body>
+
+    <div class="popup" id="popup1"><img src="head.jpeg" alt="Image 1"></div>
+    <div class="popup" id="popup2"><img src="Weibliche_brust_en.jpg" alt="Image 2"></div>
+    <div class="popup" id="popup3"><img src="insides.jpeg" alt="Image 3"></div>
+    <div class="popup" id="popup4"><img src="constructed_ultrasound.jpeg" alt="Image 4"></div>
+    <div class="popup" id="popup5"><img src="shoulder_joint_anatomy.jpg" alt="Image 5"></div>
+    <div class="popup" id="popup6"><img src="arm_interior02.jpeg" alt="Image 6"></div>
+    <div class="popup" id="popup7"><img src="shoulder_x-ray.jpg" alt="Image 7"></div>
+    <div class="popup" id="popup8"><img src="arm_interior.jpeg" alt="Image 8"></div>
+    <div class="popup" id="popup9"><img src="figure-8-1303874382.jpg" alt="Image 9"></div>
+    <div class="popup" id="popup10"><img src="smoke.jpeg" alt="Image 10"></div>
+    <div class="popup" id="popup11"><img src="converted_image.jpeg" alt="Image 11"></div>
+    <div class="popup" id="popup12"><img src="hamstring.jpeg" alt="Image 12"></div>
+    <div class="popup" id="popup13"><img src="kneebones.jpg" alt="Image 13"></div>
+    <div class="popup" id="popup14"><img src="hipcpan3.jpg" alt="Image 14"></div>
+    <div class="popup" id="popup15"><img src="femur.jpeg" alt="Image 15"></div>
+    <div class="popup" id="popup16"><img src="knees2.jpeg" alt="Image 16"></div>
+    <div class="popup" id="popup17"><img src="transparentfoot.jpeg" alt="Image 17"></div>
+    <div class="popup" id="popup18"><img src="Foot_right.png" alt="Image 18"></div>
+
+    <script>
+        function showPopup(id) {
+            const popup = document.getElementById(id);
+            popup.style.display = 'block';
+        }
+
+        window.onload = function() {
+            for (let i = 1; i <= 18; i++) { 
+                setTimeout(() => showPopup(`popup${i}`), i * 500);
+            }
+        };
+
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        function makeDraggable(popup) {
+            popup.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetX = e.clientX - popup.getBoundingClientRect().left;
+                offsetY = e.clientY - popup.getBoundingClientRect().top;
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            });
+        }
+
+        function onMouseMove(e) {
+            if (isDragging) {
+                const popup = e.target.closest('.popup');
+                popup.style.left = `${e.clientX - offsetX}px`;
+                popup.style.top = `${e.clientY - offsetY}px`;
+            }
+        }
+
+        function onMouseUp() {
+            isDragging = false;
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
+
+        document.querySelectorAll('.popup').forEach(popup => {
+            makeDraggable(popup);
+        });
+
+        // 
+        window.addEventListener('load', function() {
+            var audio = new Audio('A Quick One Before the Eternal Worm Devours Connecticut.mp3');
+            audio.loop = true; // 
+
+            // Add click event listener to the body
+            document.body.addEventListener('click', function() {
+                audio.muted = false; //
+                audio.play(); // 
+                //
+                document.body.removeEventListener('click', arguments.callee);
+            });
+        });
+    </script>
+</body>
+</html>
